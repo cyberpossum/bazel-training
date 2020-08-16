@@ -18,9 +18,9 @@ test_query "deps(//lib2, 1)" '353820ac2a859d05c3ecca3e19427526' "//lib2 should d
 test_query "deps(//lib3, 1)" '027d4111bc733b2ea8194a99bffbcb38' "//lib3 should depend on somethingexternal.cc, somethingexternal.h" '^//'
 
 # check visibility
-test_query "visible(//:main, //...)" 'f3f5f459b1f5161d0e0ecd54204dd68e' "//lib1 and //lib3 should be visible to //:main"
-test_query "visible(//lib1, //...)" '88dfc328c716f686d6b60e8b804b3cda' "//lib2 and //lib3 should be visible to //lib1"
-test_query "visible(//lib2, //...)" '92f7eca55364c49d698e429fc54550cb' "//lib3 should be visible to //lib2"
+test_query "visible(//:main, //...)" 'f3f5f459b1f5161d0e0ecd54204dd68e' "only //lib1 and //lib3 should be visible to //:main"
+test_query "visible(//lib1, //...)" '88dfc328c716f686d6b60e8b804b3cda' "only //lib2 and //lib3 should be visible to //lib1"
+test_query "visible(//lib2, //...)" '92f7eca55364c49d698e429fc54550cb' "only //lib3 should be visible to //lib2"
 test_query "visible(//lib3, //...)" '4f13659055a52ae39f699490f9dc26b2' "no other targets should be visible to //lib3"
 
 # check the output
